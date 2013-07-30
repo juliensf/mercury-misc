@@ -1,0 +1,8 @@
+empty-string1: 1: []: 1: []: 1
+empty-string2: 1: ['a']: 1: []: 1
+empty-string3: 30: ['a']: 30: []: 30
+empty-string4: 28: ['\n', '\n']: 30: []: 30
+simple1: 1: ['C', 'B', 'A']: 1: []: 1
+simple2: 1: ['\n', 'I', 'H', 'G', '\n', 'F', 'E', 'D', '\n', 'C', 'B', 'A']: 4: []: 4
+putback1: 1: ['C', 'B', 'A']: 1: ['C', 'B', 'A']: 1
+putback2: 1: ['C', 'B', 'A']: 1: ['A', 'B', 'C']: 1
