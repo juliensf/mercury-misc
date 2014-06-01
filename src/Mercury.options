@@ -1,3 +1,4 @@
+MAIN_TARGET = libmercury_misc
 MCFLAGS = --use-grade-subdirs -O5 --intermodule-optimization
 
 MCFLAGS-mercury_misc = --no-warn-nothing-exported --no-warn-interface-imports
