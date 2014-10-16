@@ -1,7 +1,7 @@
 %-----------------------------------------------------------------------------%
 % vim: ft=mercury ts=4 sw=4 et
 %-----------------------------------------------------------------------------%
-% Copyright (C) 2013 Julien Fischer.
+% Copyright (C) 2013-2014 Julien Fischer.
 % See the file LICENSE for license details.
 %-----------------------------------------------------------------------------%
 %
@@ -110,7 +110,7 @@
 
                 rmi_last_index  :: int
                 % The index of the last character we read from the source
-                % string.  A value of -1 indicates tbat we are at the
+                % string.  A value of -1 indicates that we are at the
                 % beginning of the source string (either because no characters
                 % have been read, or we "ungot" ourselves to that point.)
             ).
@@ -186,7 +186,7 @@ init_reader(MaybeName, Src, Reader, !State) :-
         MutableInfo0 = reader_mutable_info(UngetChars, LineNum, LastIndex),
         (
             UngetChars = [],
-            % Try to unget the by rewinding the index into the source string.
+            % Try to unget by rewinding the index into the source string.
             % We can do this if the character we are ungetting is already
             % in that position.
             ( if LastIndex > -1, LastIndex < SrcLen then
