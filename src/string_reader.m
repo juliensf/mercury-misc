@@ -5,8 +5,8 @@
 % See the file LICENSE for license details.
 %-----------------------------------------------------------------------------%
 %
-% This module implements string reader streams, allowing Mercury strings to be
-% used a source of characters for character reader streams.
+% This module provides string reader streams, which allow Mercury strings to be
+% used as a source of characters for character reader streams.
 %
 % The string reader types defined in this module support an unbounded amount of
 % putback, but will become less efficient if characters that were not
@@ -103,7 +103,7 @@
 :- type reader_mutable_info
     --->    reader_mutable_info(
                 rmi_unget_chars :: list(char),
-                % A list of characters that have been ungetted onto the stream.
+                % A list of characters that have been "ungetted" onto the stream.
 
                 rmi_line_number :: int,   
                 % The current line number.
