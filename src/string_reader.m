@@ -1,7 +1,7 @@
 %-----------------------------------------------------------------------------%
 % vim: ft=mercury ts=4 sw=4 et
 %-----------------------------------------------------------------------------%
-% Copyright (C) 2013-2014 Julien Fischer.
+% Copyright (C) 2013-2014, 2025 Julien Fischer.
 % See the file LICENSE for license details.
 %-----------------------------------------------------------------------------%
 %
@@ -98,19 +98,19 @@
                 reader_src           :: string,
                 reader_src_length    :: int,
                 reader_mutable_info  :: generic_mutvar(reader_mutable_info, state(T))
-            ). 
+            ).
 
 :- type reader_mutable_info
     --->    reader_mutable_info(
                 rmi_unget_chars :: list(char),
                 % A list of characters that have been "ungetted" onto the stream.
 
-                rmi_line_number :: int,   
+                rmi_line_number :: int,
                 % The current line number.
 
                 rmi_last_index  :: int
                 % The index of the last character we read from the source
-                % string.  A value of -1 indicates that we are at the
+                % string. A value of -1 indicates that we are at the
                 % beginning of the source string (either because no characters
                 % have been read, or we "ungot" ourselves to that point.)
             ).
@@ -128,7 +128,7 @@ init_state(state : state(dummy_state_type)).
 init_reader(MaybeName, Src, Reader, !State) :-
     string.length(Src, SrcLen),
     InitLineNum = 1,
-    MutableInfo = reader_mutable_info([], InitLineNum, -1),    
+    MutableInfo = reader_mutable_info([], InitLineNum, -1),
     store.new_mutvar(MutableInfo, MutableInfoVar, !State),
     Reader = reader(MaybeName, Src, SrcLen, MutableInfoVar).
 
@@ -139,9 +139,9 @@ init_reader(MaybeName, Src, Reader, !State) :-
 ].
 
 :- instance stream(reader(T), state(T)) where [
-    ( name(Reader, Name, !State) :-
+    ( name(Reader, Name, State, State) :-
         MaybeName = Reader ^ reader_maybe_name,
-        ( 
+        (
             MaybeName = yes(Name)
         ;
             MaybeName = no,
@@ -201,7 +201,7 @@ init_reader(MaybeName, Src, Reader, !State) :-
             else
                 UngetCharsPrime = [Char | UngetChars],
                 LastIndexPrime = LastIndex
-            ) 
+            )
         ;
             UngetChars = [_ | _],
             UngetCharsPrime = [Char | UngetChars],

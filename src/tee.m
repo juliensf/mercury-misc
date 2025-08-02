@@ -1,12 +1,12 @@
 %-----------------------------------------------------------------------------%
 % vim: ft=mercury ts=4 sw=4 et
 %-----------------------------------------------------------------------------%
-% Copyright (C) 2014 Julien Fischer.
+% Copyright (C) 2014, 2025 Julien Fischer.
 % See the file LICENSE for license details.
 %-----------------------------------------------------------------------------%
 %
-% This module provides tee writer streams which allow stream units to be put to
-% multiple underlying writer streams.
+% This module provides tee writer streams which allow stream units to be put
+% to multiple underlying writer streams.
 %
 %-----------------------------------------------------------------------------%
 
@@ -41,7 +41,7 @@
 %
 % :- instance stream(tee(A, B), State) <= (output(A, State), output(B, State)).
 % :- instance output(tee(A, B), State) <= (output(A, State), output(B, State)).
-% 
+%
 % But the type class system in Mercury currently doesn't allow us to do that.
 
 :- instance writer(tee(A, B), char, io)
@@ -66,9 +66,6 @@
 
 :- instance writer(tee(A, B), tee_unit(Unit), io)
     <= (writer(A, Unit, io), writer(B, Unit, io)).
-
-%-----------------------------------------------------------------------------%
-
 
 %-----------------------------------------------------------------------------%
 %-----------------------------------------------------------------------------%
